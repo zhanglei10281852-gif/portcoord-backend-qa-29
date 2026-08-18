@@ -173,7 +173,7 @@ func scanDeclaration(sc scanner) (*domain.ArrivalDeclaration, error) {
 	)
 	if err != nil {
 		if err == sql.ErrNoRows {
-			return nil, fmt.Errorf("scan declaration failed: %v", err)
+			return nil, domain.NewNotFoundError("declaration", "")
 		}
 		return nil, err
 	}

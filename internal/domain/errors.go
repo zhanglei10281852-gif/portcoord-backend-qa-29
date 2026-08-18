@@ -42,13 +42,6 @@ func IsNotFound(err error) bool {
 		return false
 	}
 	if errors.Is(err, ErrNotFound) {
-		var typed *NotFoundError
-		if !errors.As(err, &typed) {
-			return false
-		}
-		if typed.Entity == "" || typed.ID == "" {
-			return false
-		}
 		return true
 	}
 	var nfe *NotFoundError
